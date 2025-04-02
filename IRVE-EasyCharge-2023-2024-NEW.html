@@ -542,35 +542,34 @@
         </div>
     </div>
 
-    <script>
-        // Fonction pour vérifier le mot de passe
-        function checkPassword() {
-            var password = document.getElementById('passwordInput').value;
-            // Définissez votre mot de passe ici
-            var correctPassword = "78150";
-            
-            if (password === correctPassword) {
-                // Cacher l'écran de login
-                document.getElementById('loginScreen').style.display = 'none';
-                // Afficher le contenu protégé
-                document.getElementById('protectedContent').style.display = 'block';
-                // Stocker dans le localStorage pour maintenir la session
-                localStorage.setItem('easyChargeAuth', 'true');
-            } else {
-                // Afficher le message d'erreur
-                document.getElementById('loginError').style.display = 'block';
-                // Vider le champ de mot de passe
-                document.getElementById('passwordInput').value = '';
-            }
-        }
-        
-        // Vérifier si l'utilisateur est déjà authentifié
-        window.onload = function() {
-            if (localStorage.getItem('easyChargeAuth') === 'true') {
-                document.getElementById('loginScreen').style.display = 'none';
-                document.getElementById('protectedContent').style.display = 'block';
-            }
-        }
+    // Fonction pour vérifier le mot de passe
+function checkPassword() {
+    var password = document.getElementById('passwordInput').value;
+    // Définissez votre mot de passe ici
+    var correctPassword = "EasyCharge2024";
+    
+    if (password === correctPassword) {
+        // Cacher l'écran de login
+        document.getElementById('loginScreen').style.display = 'none';
+        // Afficher le contenu protégé
+        document.getElementById('protectedContent').style.display = 'block';
+        // Stocker dans le localStorage pour maintenir la session
+        localStorage.setItem('easyChargeAuth', 'true');
+    } else {
+        // Afficher le message d'erreur
+        document.getElementById('loginError').style.display = 'block';
+        // Vider le champ de mot de passe
+        document.getElementById('passwordInput').value = '';
+    }
+}
+
+// Vérifier si l'utilisateur est déjà authentifié
+window.onload = function() {
+    if (localStorage.getItem('easyChargeAuth') === 'true') {
+        document.getElementById('loginScreen').style.display = 'none';
+        document.getElementById('protectedContent').style.display = 'block';
+    }
+}
         
         // Permettre de soumettre en appuyant sur Entrée
         document.getElementById('passwordInput').addEventListener('keypress', function(event) {
