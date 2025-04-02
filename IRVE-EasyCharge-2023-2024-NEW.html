@@ -186,6 +186,23 @@
                 overflow-x: auto;
             }
         }
+
+.data-link {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 15px;
+    background-color: var(--accent-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.data-link:hover {
+    background-color: var(--primary-color);
+    text-decoration: none;
+}
     </style>
 </head>
 <body>
@@ -194,6 +211,7 @@
             <h1>Bornes de Recharge EasyCharge</h1>
             <h1>Comparatif 2023-2024</h1>
             <p>Le Chesnay-Rocquencourt | Condifentiel  | JVA version 1.0 </p>
+ 	    <p><a href="IRVE_EasyCharge_Agrégat_de_données_20232024.xlsx" download class="data-link">Télécharger le fichier de données source</a></p>
         </header>
         
         <h2>Vue d'ensemble</h2>
@@ -384,7 +402,7 @@
         <footer>
             <p>Analyse des données EasyCharge pour Le Chesnay-Rocquencourt | Période: 2023-2024</p>
             <p>Confidentiel - Généré par JVA le 2 avril 2025</p>
-        </footer>
+	 </footer>
     </div>
 </body>
 </html>
