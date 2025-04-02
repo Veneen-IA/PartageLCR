@@ -203,6 +203,43 @@
     background-color: var(--primary-color);
     text-decoration: none;
 }
+
+.contact-section {
+    background-color: var(--card-bg);
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.contact-button {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    padding: 12px 30px;
+    border-radius: 4px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 20px 0;
+    transition: background-color 0.3s ease;
+}
+
+.contact-button:hover {
+    background-color: var(--secondary-color);
+}
+
+.email-icon {
+    margin-right: 10px;
+    font-style: normal;
+}
+
+.contact-info {
+    color: #666;
+    font-size: 0.9rem;
+    margin-top: 10px;
+}
     </style>
 </head>
 <body>
@@ -211,7 +248,6 @@
             <h1>Bornes de Recharge EasyCharge</h1>
             <h1>Comparatif 2023-2024</h1>
             <p>Le Chesnay-Rocquencourt | Condifentiel  | JVA version 1.0 </p>
- 	    <p><a href="IRVE_EasyCharge_Agrégat_de_données_2023-2024.xlsx" download class="data-link">Télécharger le fichier de données source</a></p>
         </header>
         
         <h2>Vue d'ensemble</h2>
@@ -397,12 +433,18 @@
                 </tr>
             </tbody>
         </table>
-        
-         
-        <footer>
+<h2>Contact</h2>
+<div class="contact-section">
+    <p>Pour toute question ou commentaire concernant cette analyse, n'hésitez pas à nous contacter :</p>
+    <a href="mailto:cabinet.maire@lechesnay-rocquencourt.fr?subject=Commentaire sur le tableau de bord EasyCharge" class="contact-button">
+        <i class="email-icon">✉️</i> Nous contacter
+    </a>
+    <p class="contact-info">En cliquant sur ce bouton, votre application de messagerie s'ouvrira automatiquement.</p>
+</div>
+    </div>
+      <footer>
             <p>Analyse des données EasyCharge pour Le Chesnay-Rocquencourt | Période: 2023-2024</p>
             <p>Confidentiel - Généré par JVA le 2 avril 2025</p>
-	 </footer>
-    </div>
+	  </footer>  
 </body>
 </html>
