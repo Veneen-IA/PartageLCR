@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Analyse des Bornes de Recharge EasyCharge 2023-2024 - Le Chesnay-Rocquencourt</title>
+    <title>Analyse des Bornes de Recharge EasyCharge - Le Chesnay-Rocquencourt</title>
     <style>
         :root {
             --primary-color: #2c7873;
@@ -28,6 +28,81 @@
             color: var(--text-color);
             line-height: 1.6;
             padding: 20px;
+        }
+        
+        /* Styles pour la page de login */
+        #loginScreen {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: var(--bg-color);
+            text-align: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1000;
+        }
+        
+        .login-container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 450px;
+        }
+        
+        .login-logo {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .login-title {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .login-input {
+            width: 100%;
+            padding: 12px 15px;
+            margin: 15px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .login-button {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 10px;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+        
+        .login-button:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .login-error {
+            color: var(--negative-color);
+            margin-top: 10px;
+            display: none;
+        }
+        
+        /* Le reste des styles CSS */
+        #protectedContent {
+            display: none;
         }
         
         .container {
@@ -176,6 +251,62 @@
             border-top: 1px solid #eee;
         }
         
+        /* Styles pour le lien de données */
+        .data-link {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 8px 15px;
+            background-color: var(--accent-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+        
+        .data-link:hover {
+            background-color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        /* Styles pour la section contact */
+        .contact-section {
+            background-color: var(--card-bg);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .contact-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            padding: 12px 30px;
+            border-radius: 4px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 20px 0;
+            transition: background-color 0.3s ease;
+        }
+        
+        .contact-button:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .email-icon {
+            margin-right: 10px;
+            font-style: normal;
+        }
+        
+        .contact-info {
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+        
         @media (max-width: 768px) {
             .dashboard {
                 grid-template-columns: 1fr;
@@ -186,265 +317,267 @@
                 overflow-x: auto;
             }
         }
-
-.data-link {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 8px 15px;
-    background-color: var(--accent-color);
-    color: white;
-    text-decoration: none;
-    border-radius: 4px;
-    font-weight: 500;
-    transition: background-color 0.3s ease;
-}
-
-.data-link:hover {
-    background-color: var(--primary-color);
-    text-decoration: none;
-}
-
-.contact-section {
-    background-color: var(--card-bg);
-    padding: 25px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-    margin-bottom: 30px;
-    text-align: center;
-}
-
-.contact-button {
-    display: inline-block;
-    background-color: var(--primary-color);
-    color: white;
-    text-decoration: none;
-    padding: 12px 30px;
-    border-radius: 4px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin: 20px 0;
-    transition: background-color 0.3s ease;
-}
-
-.contact-button:hover {
-    background-color: var(--secondary-color);
-}
-
-.email-icon {
-    margin-right: 10px;
-    font-style: normal;
-}
-
-.contact-info {
-    color: #666;
-    font-size: 0.9rem;
-    margin-top: 10px;
-}
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Bornes de Recharge EasyCharge</h1>
-            <h1>Comparatif 2023-2024</h1>
-            <p>Le Chesnay-Rocquencourt | Condifentiel  | JVA version 1.0 </p>
-        </header>
-        
-        <h2>Vue d'ensemble</h2>
-        <div class="dashboard">
-            <div class="card">
-                <div class="card-title">Sessions de charge</div>
-                <div class="card-value">16 500</div>
-                <div class="change positive">+60% vs 2023</div>
-            </div>
-            <div class="card">
-                <div class="card-title">Consommation d'énergie</div>
-                <div class="card-value">336 303 kWh</div>
-                <div class="change positive">+73% vs 2023</div>
-            </div>
-            <div class="card">
-                <div class="card-title">Durée de charge</div>
-                <div class="card-value">25 679 h</div>
-                <div class="change positive">+54% vs 2023</div>
-            </div>
-            <div class="card">
-                <div class="card-title">Sessions moyennes/jour</div>
-                <div class="card-value">45</div>
-                <div class="change positive">+18% vs 2023</div>
-            </div>
-            <div class="card">
-                <div class="card-title">Usagers distincts</div>
-                <div class="card-value">3 084</div>
-                <div class="change negative">-3% vs 2023</div>
-            </div>
+    <!-- Écran de connexion -->
+    <div id="loginScreen">
+        <div class="login-container">
+            <div class="login-logo">⚡</div>
+            <h1 class="login-title">Analyse EasyCharge</h1>
+            <p>Veuillez saisir le mot de passe pour accéder au rapport</p>
+            <input type="password" id="passwordInput" class="login-input" placeholder="Mot de passe">
+            <button onclick="checkPassword()" class="login-button">Accéder au rapport</button>
+            <p id="loginError" class="login-error">Mot de passe incorrect. Veuillez réessayer.</p>
         </div>
-                <h2>Observations clés</h2>
-        <div class="analysis-text">
-            <ul>
-                <li>La <strong>consommation moyenne par session</strong> a augmenté de 8% (18,8 kWh → 20,4 kWh)</li>
-                <li>La <strong>durée moyenne par session</strong> a diminué de 4% (1,61h → 1,56h)</li>
-                <li>Les bornes Unity 120 offrent la meilleure efficacité de charge (ratio consommation/durée)</li>
-                <li>On observe une <strong>forte croissance des bornes Keywatt 24</strong>, qui rattrapent progressivement les Unity</li>
-                <li>La <strong>diminution du nombre total d'usagers</strong> malgré l'augmentation d'utilisation suggère une fidélisation accrue</li>
-                <li>L'ensemble des indicateurs montre une <strong>adoption croissante</strong> des infrastructures de recharge électrique dans la commune</li>
-            </ul>
-        </div> 
-        
-        <div class="analysis-text">
-            <p>L'utilisation des bornes de recharge EasyCharge au Chesnay-Rocquencourt a connu une forte croissance entre 2023 et 2024. Les sessions de charge ont augmenté de 60%, tandis que la consommation d'énergie a progressé de 73%, démontrant non seulement une utilisation plus fréquente mais aussi plus intensive des infrastructures.</p>
-            <p>Fait notable, malgré cette augmentation significative de l'utilisation, le nombre d'usagers distincts a légèrement diminué (-3%), suggérant une fidélisation accrue des utilisateurs réguliers et une utilisation plus intensive par utilisateur.</p>
-        </div>
-        
-        <h2>Analyse par type de borne</h2>
-        
-        <h3>Keywatt 24 (7 bornes)</h3>
-        <div class="dashboard">
-            <div class="card">
-                <div class="card-title">Sessions</div>
-                <div class="card-value">6 716</div>
-                <div class="change positive">+133% vs 2023</div>
-            </div>
-            <div class="card">
-                <div class="card-title">Énergie (kWh)</div>
-                <div class="card-value">114 417</div>
-                <div class="change positive">+142% vs 2023</div>
-            </div>
-            <div class="card">
-                <div class="card-title">Durée (h)</div>
-                <div class="card-value">12 932</div>
-                <div class="change positive">+111% vs 2023</div>
-            </div>
-            <div class="card">
-                <div class="card-title">Usagers distincts</div>
-                <div class="card-value">1 380</div>
-                <div class="change positive">+74% vs 2023</div>
-            </div>
-        </div>
-        
-        <h3>Unity 120 (4 bornes)</h3>
-        <div class="dashboard">
-            <div class="card">
-                <div class="card-title">Sessions</div>
-                <div class="card-value">6 343</div>
-                <div class="change positive">+57% vs 2023</div>
-            </div>
-            <div class="card">
-                <div class="card-title">Énergie (kWh)</div>
-                <div class="card-value">145 645</div>
-                <div class="change positive">+61% vs 2023</div>
-            </div>
-            <div class="card">
-                <div class="card-title">Durée (h)</div>
-                <div class="card-value">5 623</div>
-                <div class="change positive">+17% vs 2023</div>
-            </div>
-            <div class="card">
-                <div class="card-title">Usagers distincts</div>
-                <div class="card-value">1 867</div>
-                <div class="change positive">+37% vs 2023</div>
-            </div>
-        </div>
-        
-        <h3>Unity 60 (4 bornes)</h3>
-        <div class="dashboard">
-            <div class="card">
-                <div class="card-title">Sessions</div>
-                <div class="card-value">3 679</div>
-                <div class="change positive">+8% vs 2023</div>
-            </div>
-            <div class="card">
-                <div class="card-title">Énergie (kWh)</div>
-                <div class="card-value">78 473</div>
-                <div class="change positive">+38% vs 2023</div>
-            </div>
-            <div class="card">
-                <div class="card-title">Durée (h)</div>
-                <div class="card-value">5 216</div>
-                <div class="change negative">-8% vs 2023</div>
-            </div>
-            <div class="card">
-                <div class="card-title">Usagers distincts</div>
-                <div class="card-value">1 177</div>
-                <div class="change positive">+14% vs 2023</div>
-            </div>
-        </div>
-        
-        <div class="analysis-text">
-            <p>L'analyse par type de borne révèle des dynamiques intéressantes :</p>
-            <ul>
-                <li>Les bornes <strong>Keywatt 24</strong> ont connu la plus forte progression (+133% de sessions), rattrapant progressivement les modèles Unity en termes d'utilisation</li>
-                <li>Les bornes <strong>Unity 120</strong> restent les plus efficaces en termes de consommation par heure de charge</li>
-                <li>Les bornes <strong>Unity 60</strong> montrent une optimisation d'utilisation avec une baisse de la durée de charge (-8%) malgré une hausse de la consommation (+38%)</li>
-            </ul>
-        </div>
-        
-        <h2>Bornes les plus performantes (2024)</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Borne</th>
-                    <th>Localisation</th>
-                    <th>Modèle</th>
-                    <th>Sessions</th>
-                    <th>Énergie (kWh)</th>
-                    <th>Usagers</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>VVUE</td>
-                    <td>Carrefour de la Redingote</td>
-                    <td>Unity 120</td>
-                    <td>1 879</td>
-                    <td>47 887</td>
-                    <td>551</td>
-                </tr>
-                <tr>
-                    <td>SEYT</td>
-                    <td>Parly 2</td>
-                    <td>Unity 120</td>
-                    <td>1 586</td>
-                    <td>33 675</td>
-                    <td>648</td>
-                </tr>
-                <tr>
-                    <td>ZCHN</td>
-                    <td>Rue de Versailles</td>
-                    <td>Keywatt 24</td>
-                    <td>1 295</td>
-                    <td>25 935</td>
-                    <td>274</td>
-                </tr>
-                <tr>
-                    <td>ZVTD</td>
-                    <td>Avenue Dutarte</td>
-                    <td>Keywatt 24</td>
-                    <td>1 173</td>
-                    <td>20 036</td>
-                    <td>293</td>
-                </tr>
-                <tr>
-                    <td>NLLK</td>
-                    <td>Rue Pottier</td>
-                    <td>Unity 60</td>
-                    <td>1 102</td>
-                    <td>22 386</td>
-                    <td>403</td>
-                </tr>
-            </tbody>
-        </table>
-<h2>Contact</h2>
-<div class="contact-section">
-    <p>Pour toute question ou commentaire concernant cette analyse, n'hésitez pas à nous contacter :</p>
-    <a href="mailto:cabinet.maire@lechesnay-rocquencourt.fr?subject=Commentaire sur le tableau de bord EasyCharge" class="contact-button">
-        <i class="email-icon">✉️</i> Nous contacter
-    </a>
-    <p class="contact-info">En cliquant sur ce bouton, votre application de messagerie s'ouvrira automatiquement.</p>
-</div>
     </div>
-      <footer>
-            <p>Analyse des données EasyCharge pour Le Chesnay-Rocquencourt | Période: 2023-2024</p>
-            <p>Confidentiel - Généré par JVA le 2 avril 2025</p>
-	  </footer>  
+
+    <!-- Contenu protégé -->
+    <div id="protectedContent">
+        <div class="container">
+            <header>
+                <h1>Analyse des Bornes de Recharge EasyCharge</h1>
+                <p>Le Chesnay-Rocquencourt | Comparatif 2023-2024</p>
+                <p><a href="IRVE_EasyCharge_Agrégat_de_données_20232024.xlsx" download class="data-link">Télécharger le fichier de données source</a></p>
+            </header>
+            
+            <h2>Vue d'ensemble</h2>
+            <div class="dashboard">
+                <div class="card">
+                    <div class="card-title">Sessions de charge</div>
+                    <div class="card-value">16 500</div>
+                    <div class="change positive">+60% vs 2023</div>
+                </div>
+                <div class="card">
+                    <div class="card-title">Consommation d'énergie</div>
+                    <div class="card-value">336 303 kWh</div>
+                    <div class="change positive">+73% vs 2023</div>
+                </div>
+                <div class="card">
+                    <div class="card-title">Durée de charge</div>
+                    <div class="card-value">25 679 h</div>
+                    <div class="change positive">+54% vs 2023</div>
+                </div>
+                <div class="card">
+                    <div class="card-title">Sessions moyennes/jour</div>
+                    <div class="card-value">45</div>
+                    <div class="change positive">+18% vs 2023</div>
+                </div>
+                <div class="card">
+                    <div class="card-title">Usagers distincts</div>
+                    <div class="card-value">3 084</div>
+                    <div class="change negative">-3% vs 2023</div>
+                </div>
+            </div>
+            
+            <div class="analysis-text">
+                <p>L'utilisation des bornes de recharge EasyCharge au Chesnay-Rocquencourt a connu une forte croissance entre 2023 et 2024. Les sessions de charge ont augmenté de 60%, tandis que la consommation d'énergie a progressé de 73%, démontrant non seulement une utilisation plus fréquente mais aussi plus intensive des infrastructures.</p>
+                <p>Fait notable, malgré cette augmentation significative de l'utilisation, le nombre d'usagers distincts a légèrement diminué (-3%), suggérant une fidélisation accrue des utilisateurs réguliers et une utilisation plus intensive par utilisateur.</p>
+            </div>
+            
+            <h2>Analyse par type de borne</h2>
+            
+            <h3>Keywatt 24 (7 bornes)</h3>
+            <div class="dashboard">
+                <div class="card">
+                    <div class="card-title">Sessions</div>
+                    <div class="card-value">6 716</div>
+                    <div class="change positive">+133% vs 2023</div>
+                </div>
+                <div class="card">
+                    <div class="card-title">Énergie (kWh)</div>
+                    <div class="card-value">114 417</div>
+                    <div class="change positive">+142% vs 2023</div>
+                </div>
+                <div class="card">
+                    <div class="card-title">Durée (h)</div>
+                    <div class="card-value">12 932</div>
+                    <div class="change positive">+111% vs 2023</div>
+                </div>
+                <div class="card">
+                    <div class="card-title">Usagers distincts</div>
+                    <div class="card-value">1 380</div>
+                    <div class="change positive">+74% vs 2023</div>
+                </div>
+            </div>
+            
+            <h3>Unity 120 (4 bornes)</h3>
+            <div class="dashboard">
+                <div class="card">
+                    <div class="card-title">Sessions</div>
+                    <div class="card-value">6 343</div>
+                    <div class="change positive">+57% vs 2023</div>
+                </div>
+                <div class="card">
+                    <div class="card-title">Énergie (kWh)</div>
+                    <div class="card-value">145 645</div>
+                    <div class="change positive">+61% vs 2023</div>
+                </div>
+                <div class="card">
+                    <div class="card-title">Durée (h)</div>
+                    <div class="card-value">5 623</div>
+                    <div class="change positive">+17% vs 2023</div>
+                </div>
+                <div class="card">
+                    <div class="card-title">Usagers distincts</div>
+                    <div class="card-value">1 867</div>
+                    <div class="change positive">+37% vs 2023</div>
+                </div>
+            </div>
+            
+            <h3>Unity 60 (4 bornes)</h3>
+            <div class="dashboard">
+                <div class="card">
+                    <div class="card-title">Sessions</div>
+                    <div class="card-value">3 679</div>
+                    <div class="change positive">+8% vs 2023</div>
+                </div>
+                <div class="card">
+                    <div class="card-title">Énergie (kWh)</div>
+                    <div class="card-value">78 473</div>
+                    <div class="change positive">+38% vs 2023</div>
+                </div>
+                <div class="card">
+                    <div class="card-title">Durée (h)</div>
+                    <div class="card-value">5 216</div>
+                    <div class="change negative">-8% vs 2023</div>
+                </div>
+                <div class="card">
+                    <div class="card-title">Usagers distincts</div>
+                    <div class="card-value">1 177</div>
+                    <div class="change positive">+14% vs 2023</div>
+                </div>
+            </div>
+            
+            <div class="analysis-text">
+                <p>L'analyse par type de borne révèle des dynamiques intéressantes :</p>
+                <ul>
+                    <li>Les bornes <strong>Keywatt 24</strong> ont connu la plus forte progression (+133% de sessions), rattrapant progressivement les modèles Unity en termes d'utilisation</li>
+                    <li>Les bornes <strong>Unity 120</strong> restent les plus efficaces en termes de consommation par heure de charge</li>
+                    <li>Les bornes <strong>Unity 60</strong> montrent une optimisation d'utilisation avec une baisse de la durée de charge (-8%) malgré une hausse de la consommation (+38%)</li>
+                </ul>
+            </div>
+            
+            <h2>Bornes les plus performantes (2024)</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Borne</th>
+                        <th>Localisation</th>
+                        <th>Modèle</th>
+                        <th>Sessions</th>
+                        <th>Énergie (kWh)</th>
+                        <th>Usagers</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>VVUE</td>
+                        <td>Carrefour de la Redingote</td>
+                        <td>Unity 120</td>
+                        <td>1 879</td>
+                        <td>47 887</td>
+                        <td>551</td>
+                    </tr>
+                    <tr>
+                        <td>SEYT</td>
+                        <td>Parly 2</td>
+                        <td>Unity 120</td>
+                        <td>1 586</td>
+                        <td>33 675</td>
+                        <td>648</td>
+                    </tr>
+                    <tr>
+                        <td>ZCHN</td>
+                        <td>Rue de Versailles</td>
+                        <td>Keywatt 24</td>
+                        <td>1 295</td>
+                        <td>25 935</td>
+                        <td>274</td>
+                    </tr>
+                    <tr>
+                        <td>ZVTD</td>
+                        <td>Avenue Dutarte</td>
+                        <td>Keywatt 24</td>
+                        <td>1 173</td>
+                        <td>20 036</td>
+                        <td>293</td>
+                    </tr>
+                    <tr>
+                        <td>NLLK</td>
+                        <td>Rue Pottier</td>
+                        <td>Unity 60</td>
+                        <td>1 102</td>
+                        <td>22 386</td>
+                        <td>403</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h2>Observations clés</h2>
+            <div class="analysis-text">
+                <ul>
+                    <li>La <strong>consommation moyenne par session</strong> a augmenté de 8% (18,8 kWh → 20,4 kWh)</li>
+                    <li>La <strong>durée moyenne par session</strong> a diminué de 4% (1,61h → 1,56h)</li>
+                    <li>Les bornes Unity 120 offrent la meilleure efficacité de charge (ratio consommation/durée)</li>
+                    <li>On observe une <strong>forte croissance des bornes Keywatt 24</strong>, qui rattrapent progressivement les Unity</li>
+                    <li>La <strong>diminution du nombre total d'usagers</strong> malgré l'augmentation d'utilisation suggère une fidélisation accrue</li>
+                    <li>L'ensemble des indicateurs montre une <strong>adoption croissante</strong> des infrastructures de recharge électrique dans la commune</li>
+                </ul>
+            </div>
+            
+            <h2>Contact</h2>
+            <div class="contact-section">
+                <p>Pour toute question ou commentaire concernant cette analyse, n'hésitez pas à nous contacter :</p>
+                <a href="mailto:cabinet.maire@lechesnay-rocquencourt.fr?subject=Commentaire sur l'analyse EasyCharge" class="contact-button">
+                    <i class="email-icon">✉️</i> Nous contacter
+                </a>
+                <p class="contact-info">En cliquant sur ce bouton, votre application de messagerie s'ouvrira automatiquement.</p>
+            </div>
+            
+            <footer>
+                <p>Analyse des données EasyCharge pour Le Chesnay-Rocquencourt | Période: 2023-2024</p>
+                <p>Généré le 2 avril 2025</p>
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        // Fonction pour vérifier le mot de passe
+        function checkPassword() {
+            var password = document.getElementById('passwordInput').value;
+            // Définissez votre mot de passe ici
+            var correctPassword = "78150";
+            
+            if (password === correctPassword) {
+                // Cacher l'écran de login
+                document.getElementById('loginScreen').style.display = 'none';
+                // Afficher le contenu protégé
+                document.getElementById('protectedContent').style.display = 'block';
+                // Stocker dans le localStorage pour maintenir la session
+                localStorage.setItem('easyChargeAuth', 'true');
+            } else {
+                // Afficher le message d'erreur
+                document.getElementById('loginError').style.display = 'block';
+                // Vider le champ de mot de passe
+                document.getElementById('passwordInput').value = '';
+            }
+        }
+        
+        // Vérifier si l'utilisateur est déjà authentifié
+        window.onload = function() {
+            if (localStorage.getItem('easyChargeAuth') === 'true') {
+                document.getElementById('loginScreen').style.display = 'none';
+                document.getElementById('protectedContent').style.display = 'block';
+            }
+        }
+        
+        // Permettre de soumettre en appuyant sur Entrée
+        document.getElementById('passwordInput').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                checkPassword();
+            }
+        });
+    </script>
 </body>
 </html>
