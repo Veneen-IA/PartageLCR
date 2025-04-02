@@ -542,7 +542,7 @@
         </div>
     </div>
 
-    // Fonction pour vérifier le mot de passe
+   // Fonction pour vérifier le mot de passe
 function checkPassword() {
     var password = document.getElementById('passwordInput').value;
     // Définissez votre mot de passe ici
@@ -553,8 +553,7 @@ function checkPassword() {
         document.getElementById('loginScreen').style.display = 'none';
         // Afficher le contenu protégé
         document.getElementById('protectedContent').style.display = 'block';
-        // Stocker dans le localStorage pour maintenir la session
-        localStorage.setItem('easyChargeAuth', 'true');
+        // Pas de stockage de session - obligera la saisie à chaque chargement
     } else {
         // Afficher le message d'erreur
         document.getElementById('loginError').style.display = 'block';
@@ -563,12 +562,11 @@ function checkPassword() {
     }
 }
 
-// Vérifier si l'utilisateur est déjà authentifié
+// Au chargement de la page, toujours afficher l'écran de login
 window.onload = function() {
-    if (localStorage.getItem('easyChargeAuth') === 'true') {
-        document.getElementById('loginScreen').style.display = 'none';
-        document.getElementById('protectedContent').style.display = 'block';
-    }
+    // Pas de vérification de session précédente
+    document.getElementById('loginScreen').style.display = 'flex';
+    document.getElementById('protectedContent').style.display = 'none';
 }
         
         // Permettre de soumettre en appuyant sur Entrée
